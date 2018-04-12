@@ -1,26 +1,8 @@
 #include "fast_mpd_parser/Include.h"
 
 namespace fast_mpd_parser {
-    // struct Period {
-    //     char* xlink_href;
-    //     XlinkActuate xlink_actuate;
-    //     char* id;
-    //     uint64_t start;
-    //     uint64_t duration;
-    //     bool bitstream_switching; 
-        
-    //     BaseUrl* base_urls[GENERAL_ELEMENT_MAX_COUNT];
-    //     uint32_t base_urls_size;
-    //     SegmentBase* segment_base;
-    //     SegmentList* segment_list;
-    //     SegmentTemplate* segment_template;
-    //     AdaptationSet* adaptation_sets[GENERAL_ELEMENT_MAX_COUNT];
-    //     uint32_t adaptation_sets_size;
-    //     Subset* subsets[GENERAL_ELEMENT_MAX_COUNT];
-    //     uint32_t subsets_size;
-    // };
 
-    void parse_period(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
+    Status parse_period(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
         uint32_t tag_name_start, 
             tag_name_end, 
             tag_name_len; 

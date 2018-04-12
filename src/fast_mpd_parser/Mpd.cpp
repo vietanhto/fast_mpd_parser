@@ -2,7 +2,7 @@
 
 namespace fast_mpd_parser {
 
-    void parse_mpd(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
+    Status parse_mpd(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
         uint32_t tag_name_start, 
             tag_name_end, 
             tag_name_len; 

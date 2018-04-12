@@ -1,4 +1,16 @@
 namespace fast_mpd_parser {
+    enum Status {
+        Success
+    };
+
+    inline uint64_t fast_atoi(const char* s) {
+        uint64_t r = 0;
+        while(*s) {
+            r = r * 10 + (*s++ - '0');
+        }
+        return r;
+    }
+
     #define FMP__SCAN_CHAR(c) while (pos < size && buffer[pos] != c) { pos++; }
     #define FMP__SKIP_CHAR(c) while (pos < size && buffer[pos] == c) { pos++; }
 

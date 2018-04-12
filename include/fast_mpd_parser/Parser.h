@@ -2,19 +2,19 @@
 #define FAST_MPD_PARSER_PARSER_H
 
 namespace fast_mpd_parser {
-    void parse(char* buffer, uint32_t size);
+    Status parse(char* buffer, uint32_t size, Mpd* ptr_mpd);
 
-    void parse_mpd(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    Status parse_mpd(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
     
-    void parse_period(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    Status parse_period(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
     
-    void parse_adaptation_set(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    Status parse_adaptation_set(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
     
-    void parse_representation(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    Status parse_representation(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
     
-    void parse_segment_list(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    Status parse_segment_list(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
     
-    void parse_segment_url(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    Status parse_segment_url(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
     
     /**
      * Requirement: pos is right after tag name
@@ -28,7 +28,7 @@ namespace fast_mpd_parser {
      *            |
      *           pos
      */
-    void parseTag(char* buffer, uint32_t size, uint32_t* pPos, void* elem);
+    void parseTag(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem);
 
     void free_representation(Representation* ptr_representation);
 

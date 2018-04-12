@@ -2,7 +2,7 @@
 
 namespace fast_mpd_parser {
 
-    void parse_segment_list(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
+    Status parse_segment_list(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
         uint32_t tag_name_start, 
             tag_name_end, 
             tag_name_len; 
@@ -25,7 +25,7 @@ namespace fast_mpd_parser {
             FMP__LOC_NEXT_TAG();
             if (0 == strncmp(buffer + tag_name_start, "SegmentURL", tag_name_len)) {
                 i = ptr_segment_list->segment_urls_size++;
-                parseTag(buffer, size, &pos, ptr_segment_list->segment_urls + i);
+                parse_segment_url(buffer, size, &pos, ptr_segment_list->segment_urls + i);
             } else {
                 parseTag(buffer, size, &pos, NULL);
             }

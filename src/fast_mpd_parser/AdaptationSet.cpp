@@ -2,22 +2,7 @@
 
 namespace fast_mpd_parser {
 
-    // struct AdaptationSet {
-    //     char* xlink_href;
-    //     XlinkActuate xlink_actuate;
-    //     char* id;
-    //     char* group;
-    //     char* lang;
-    //     char* content_type;
-    //     char* par;
-
-    //     SegmentList* segment_list;
-    //     Representation* representations[GENERAL_ELEMENT_MAX_COUNT];
-    //     uint32_t representations_size;
-    // };
-
-
-    void parse_adaptation_set(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
+    Status parse_adaptation_set(char* buffer, uint32_t size, uint32_t* ptr_pos, void* elem) {
         uint32_t tag_name_start, 
             tag_name_end, 
             tag_name_len; 

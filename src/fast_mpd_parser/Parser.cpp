@@ -2,14 +2,6 @@
 
 namespace fast_mpd_parser {
 
-    inline uint64_t fast_atoi( const char * str ) {
-        uint64_t val = 0;
-        while( *str ) {
-            val = val*10 + (*str++ - '0');
-        }
-        return val;
-    }
-
     void parse1(char* buffer, uint32_t size) {
         uint32_t pos = 0;
         goto STATE_START;
@@ -126,8 +118,7 @@ namespace fast_mpd_parser {
         return;
     }
 
-    void parse(char* buffer, uint32_t size) {
-        Mpd* pMpd = (Mpd*) calloc(1, sizeof(Mpd));
+    Status parse(char* buffer, uint32_t size, Mpd* ptr_mpd) {
         uint32_t pos = 0;
 
         FMP__SCAN_CHAR('<');
@@ -136,8 +127,7 @@ namespace fast_mpd_parser {
         FMP__SCAN_CHAR('<');
         FMP__SCAN_CHAR_TYPE(ct_space);
 
-        parse_mpd(buffer, size, &pos, pMpd);
-        free_mpd(pMpd);
+        parse_mpd(buffer, size, &pos, ptr_mpd);
     }
 
     void parseTag(char* buffer, uint32_t size, uint32_t* pPos, void* elem) {
@@ -175,9 +165,7 @@ namespace fast_mpd_parser {
             tag_name_end = pos;
             // printf("%.*s\n",tag_name_end - tag_name_start,buffer + tag_name_start);
 
-            *pPos = pos;
-            parseTag(buffer, size, pPos, NULL);
-            pos = *pPos;
+            parseTag(buffer, size, &pos, NULL);
         }
 
     CleanUp:
