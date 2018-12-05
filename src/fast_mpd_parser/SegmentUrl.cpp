@@ -14,7 +14,7 @@ namespace fast_mpd_parser {
         char quote;
         uint32_t first_range_end;
         uint32_t i;
-        Status status = Status::Success;
+        Status status = Success;
         bool found_close_tag = false;
         uint32_t pos = *ptr_pos;
         SegmentUrl* ptr_segment_url = (SegmentUrl*) elem;
