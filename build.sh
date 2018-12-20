@@ -6,6 +6,7 @@ fi
 pushd ./build
 cmake ..
 make
+./fmp_test
 popd
 
 echo "making javascript ..."
@@ -17,6 +18,7 @@ cd ./build_js
 emconfigure cmake ..
 emmake make
 emcc libfmp.so -o final.html
+node ./fmp_test.js
 popd
 
 # time ./build/fast_mpd_parser

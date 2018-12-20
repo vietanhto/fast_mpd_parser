@@ -15,3 +15,5 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 add_library(${PROJECT_NAME} SHARED ${PROJECT_SRC})
+add_executable(${PROJECT_NAME}_test tst/fast_mpd_parser/test.cpp)
+target_link_libraries(${PROJECT_NAME}_test ${PROJECT_NAME})
